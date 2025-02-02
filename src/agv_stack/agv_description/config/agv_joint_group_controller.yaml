@@ -9,17 +9,17 @@ agv_joint_group_controller:
     - y_joint
     - angle_joint
 
-# gazebo_ros_control:
-#     pid_gains:
-#       x_joint:
-#         p: 100.0
-#         i: 0.01
-#         d: 1.0
-#       y_joint:
-#         p: 100.0
-#         i: 0.01
-#         d: 1.0
-#       angle_joint:
-#         p: 100.0
-#         i: 0.01
-#         d: 1.0
+gazebo_ros_control:
+     pid_gains:
+       x_joint:
+         p: 100.0
+         i: 0.01
+         d: 1.0
+       y_joint:
+         p: 100.0
+         i: 0.01
+         d: 1.0
+       angle_joint:
+         p: 100.0
+         i: 0.01
+         d: 1.0

@@ -19,10 +19,10 @@ public:
 
         joint_state_sub_ = nh_.subscribe("joint_states", 1, &agv_vel_controller::jointStatesCallback, this);
         joint_state_flag_ = false;
-        while(joint_state_flag_ == false);
+        // while(joint_state_flag_ == false);
 
         joint_pos_pub_ = nh_.advertise<std_msgs::Float64MultiArray>("agv_joint_group_controller/command", 1000);
-        twist_sub_ = nh_.subscribe("cmd_vel", 1, &agv_vel_controller::twistCallback, this);
+        twist_sub_ = nh_.subscribe("/cmd_vel", 1, &agv_vel_controller::twistCallback, this);
         pre_time_ = ros::Time::now();
     }
 
@@ -50,7 +50,7 @@ void agv_vel_controller::twistCallback(const geometry_msgs::TwistConstPtr& twist
     // 防止长时间没有速度输入，突然间来了一个速度输入，机器人会不正常的运动
     if(delta_t > 0.5)  
     {
-        // ROS_ERROR("The robot will move!");
+        ROS_ERROR("The robot will move!");
         delta_t = 0;
     }
 
@@ -90,11 +90,12 @@ void agv_vel_controller::jointStatesCallback(const sensor_msgs::JointStateConstP
 int main(int argc, char *argv[])
 {
     ros::init(argc, argv, "agv_vel_controller");
-    ros::AsyncSpinner spinner(1);
-    spinner.start();
 
     agv_vel_controller controller;
 
+    ros::AsyncSpinner spinner(1);
+    spinner.start();
     ros::waitForShutdown();
+
     return 0;
 }
