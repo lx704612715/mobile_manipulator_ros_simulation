@@ -2,6 +2,30 @@
 
 此工作空间为移动机器人，机械臂和移动操作机器人基于gazebo的仿真环境搭建。
 
+## Dependencies
+
+### ROS basic components 
+sudo apt install python3-rosdep2
+roscd catkin_ws
+rosdep install --from-paths src --ignore-src -r -y
+sudo apt-get install ros-noetic-rosbash 
+
+### install control modules 
+sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros-control
+
+### install gazebo modules 
+sudo apt-get install ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs
+
+### install mapping and localization module
+sudo apt-get install ros-noetic-slam-gmapping ros-noetic-fake-localization ros-noetic-navigation
+
+### others 
+sudo apt-get install ros-noetic-teleop-twist-keyboard 
+
+### Python libraries
+sudo apt-get install python3-pyqt5 python-is-python3 
+pip install python3-pyqt5 pyside2 pydot graphviz rospkg
+
 ### agv_stack
 
 移动机器人功能元包。
